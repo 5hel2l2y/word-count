@@ -27,7 +27,15 @@ public class WordCount {
     }
     
     // sort list by count
+    List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(counts.entrySet());
+
+    Collections.sort(list, Collections.reverseOrder(new Comparator<Map.Entry<String, Integer>>() {
+      public int compare(Map.Entry<String, Integer> listOne, Map.Entry<String, Integer> listTwo) {
+        return (listOne.getValue()).compareTo(listTwo.getValue());
+      }
+    }));
+
     // print list
-    System.out.println(counts);
+    list.forEach((count) -> System.out.println(count));
   }
 }
